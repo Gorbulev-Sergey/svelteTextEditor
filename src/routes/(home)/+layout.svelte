@@ -2,7 +2,7 @@
 	// @ts-nocheck
 	import { Article, Image } from '$lib/scripts/models/article.js';
 	import Navbar from '$lib/Navbar.svelte';
-	import Block from '$lib/blocks/Block.svelte';
+	import Block from '$lib/blocks/old/Block.svelte';
 
 	$: blocks = [];
 </script>

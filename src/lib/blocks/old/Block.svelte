@@ -1,25 +1,15 @@
 <script>
-	class Tag {
-		constructor(_html = null, _class = null) {
-			/**
-			 * @type {null|String}
-			 */
-			this._html = _html;
-			/**
-			 * @type {null|String}
-			 */
-			this._class = _class;
-		}
-	}
-	export let tag = new Tag();
+	let _class = '';
+	let justifyContent = 'justify-content-start';
+	export let index = 0;
+	export let onRemove = () => {};
 	export let onTop = () => {};
 	export let onDown = () => {};
-	export let onRemove = () => {};
 </script>
 
-<div class="d-flex gap-1 {tag._class}">
-	<div class="flex-grow-1 form-control border-0" contenteditable="true">
-		{@html tag._html}
+<div class="{_class} d-flex align-items-start mb-1 gap-2">
+	<div class="flex-grow-1 {justifyContent} d-flex">
+		<slot />
 	</div>
 	<div class="dropdown">
 		<button class="btn btn-dark bg-body-tertiary" data-bs-toggle="dropdown">
@@ -28,13 +18,25 @@
 		<div class="dropdown-menu dropdown-menu-end p-0">
 			<div class="d-flex flex-column gap-2 m-2">
 				<div class="btn-group">
-					<button class="btn btn-dark bg-body-tertiary" on:click={() => {}}>
+					<button
+						class="btn btn-dark bg-body-tertiary"
+						on:click={() => {
+							justifyContent = 'justify-content-start';
+						}}>
 						<i class="fa-solid fa-align-left" />
 					</button>
-					<button class="btn btn-dark bg-body-tertiary" on:click={() => {}}>
+					<button
+						class="btn btn-dark bg-body-tertiary"
+						on:click={() => {
+							justifyContent = 'justify-content-evenly';
+						}}>
 						<i class="fa-solid fa-align-center" />
 					</button>
-					<button class="btn btn-dark bg-body-tertiary" on:click={() => {}}>
+					<button
+						class="btn btn-dark bg-body-tertiary"
+						on:click={() => {
+							justifyContent = 'justify-content-end';
+						}}>
 						<i class="fa-solid fa-align-right" />
 					</button>
 					<button class="btn btn-dark bg-body-tertiary" on:click={() => {}}>

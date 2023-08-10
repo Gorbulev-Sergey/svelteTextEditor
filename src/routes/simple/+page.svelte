@@ -1,5 +1,6 @@
 <script>
 	// @ts-nocheck
+	import Title from '$lib/blocks/Title.svelte';
 	import Tag from './Tag.svelte';
 	class _Tag {
 		constructor(_html = null, _class = null) {
@@ -12,6 +13,7 @@
 	 * @type {any[]}
 	 */
 	$: content = new Array();
+	$: titles = [1, 2, 3];
 	let counter = 0;
 </script>
 
@@ -51,3 +53,13 @@
 			}} />
 	{/each}
 </div>
+
+{#each titles as title, i}
+	<Title
+		title="Всем привет {i}"
+		_class="text-end h1"
+		onRemove={() => {
+			titles.splice(i, 1);
+			titles = [...titles];
+		}} />
+{/each}
