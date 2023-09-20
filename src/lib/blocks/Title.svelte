@@ -6,9 +6,11 @@
 	export let title = '';
 	export let _class = '';
 	export let onRemove = () => {};
+	export let onTop = () => {};
+	export let onDown = () => {};
 </script>
 
-<Block {onRemove}>
+<Block {onRemove} {onTop} {onDown}>
 	<div class={_class} contenteditable="true" data-my="title">
 		{title}
 	</div>

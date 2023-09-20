@@ -3,8 +3,11 @@
 	import { Article, Image } from '$lib/scripts/models/article.js';
 	import Navbar from '$lib/Navbar.svelte';
 	import Block from '$lib/blocks/old/Block.svelte';
+	import { onMount } from 'svelte';
+	import { goto } from '$app/navigation';
 
 	$: blocks = [];
+	onMount(()=>goto("/simple"));
 </script>
 
 <Navbar title="Текстовый редактор">
