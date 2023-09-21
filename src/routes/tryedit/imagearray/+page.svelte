@@ -1,12 +1,13 @@
 <script>
 	// @ts-nocheck
 	class Image {
-		constructor(url = '', title = '', margin = 0, padding = 0, width = 25) {
+		constructor(url = '', title = '', margin = 0, padding = 0, width = 25, style = '') {
 			this.url = url;
 			this.margin = margin;
 			this.padding = padding;
 			this.title = title;
 			this.width = width;
+			this.style = style;
 		}
 	}
 	let images = [];
@@ -23,10 +24,10 @@
 {#if images.length > 0}
 	{#each images as image, i}
 		<div class="d-flex align-items-start gap-2">
-			<div class="d-flex flex-column flex-grow-1">
-				<img class="w-25 rounded-1 m-{image.margin} p-{image.padding} w-{image.width}" src={image.url} alt="" />
-				{#if image.title}
-					<div>{image.title}</div>
+			<div class="d-flex flex-column flex-grow-1 m-{image.margin} p-{image.padding}">
+				<img class="w-25 rounded-1 w-{image.width}" src={image.url} style={image.style} alt="" />
+				{#if image.title != ''}
+					<div class="mt-1">{image.title}</div>
 				{/if}
 			</div>
 			<div class="d-flex flex-column gap-1" style="min-width:20em">
@@ -94,6 +95,13 @@
 					<div class="d-flex align-items-center gap-1">
 						<div>width:</div>
 						<input type="number" min="25" max="100" step="25" class="form-control" bind:value={image.width} />
+					</div>
+				</div>
+				<!-- style -->
+				<div class="d-flex align-items-center gap-1">
+					<div class="d-flex align-items-center gap-1">
+						<div>style:</div>
+						<input class="form-control" bind:value={image.style} />
 					</div>
 				</div>
 			</div>
