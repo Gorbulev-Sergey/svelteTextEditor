@@ -34,6 +34,7 @@
 				<button class="btn btn-dark article-light" on:click={() => (articles[selected]._class = 'h4')}>h4</button>
 				<button class="btn btn-dark article-light" on:click={() => (articles[selected]._class = 'h5')}>h5</button>
 				<button class="btn btn-dark article-light" on:click={() => (articles[selected]._class = 'h6')}>h6</button>
+				<button class="btn btn-dark article-light" on:click={() => (articles[selected]._class = '')}>div</button>
 			</div>
 		{/if}
 	</nav>
@@ -47,7 +48,7 @@
 				<div
 					class="flex-grow-1 bg-light p-2 rounded-1 mb-2 {article._class}"
 					contenteditable="true"
-					bind:innerText={article.content} />
+					bind:innerHTML={article.content} />
 				<div class="btn-group">
 					<button
 						class="btn btn-light"
@@ -81,9 +82,11 @@
 	{/if}
 	<nav slot="nav">
 		{#if selected != null}
-			<div class="d-flex align-items-center gap-1 p-2">
+			<div class="d-flex flex-column gap-2 p-3">
 				<i class="fa-solid fa-code" />
-				<div>content:</div>
+				<div class="bg-white border p-2" contenteditable="true" bind:innerText={articles[selected].content}>
+					content: {articles[selected].content}
+				</div>
 			</div>
 		{/if}
 	</nav>
